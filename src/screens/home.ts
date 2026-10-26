@@ -9,6 +9,26 @@ import { catdexPercent, persist, save, today, uniqueCards, type LensId } from ".
 import { $, $$, fmt, ICON } from "../ui";
 import { openAbout, openAchievements, openDailyDone, openMultiverse, openSettings } from "./sheets";
 
+/** First visit only: one tap to play. The tap also unlocks sound before the first box appears. */
+export function mountIntro(root: HTMLElement): () => void {
+  root.innerHTML = `<section class="screen intro">
+    <header class="home-head">
+      <p class="kicker">A push-your-luck thought experiment</p>
+      <h1 class="title"><span>Schrödinger's</span><span>Box</span></h1>
+    </header>
+    <div class="home-stage">
+      <p class="fig-note" aria-hidden="true">fig. 1: one cat, probably</p>
+      <div class="crate-wrap idle">${crateSVG()}<div class="crate-shadow"></div></div>
+    </div>
+    <p class="intro-pitch">Wait longer for bigger rewards, but every second the atom is more likely to have decayed.</p>
+    <button class="btn btn-primary btn-xl intro-play">Play<small>9 lives</small></button>
+  </section>`;
+  const play = $(".intro-play", root) as HTMLButtonElement;
+  play.addEventListener("click", () => nav.go("round", newRun("run", { firstEver: true })));
+  play.focus({ preventScroll: true });
+  return () => {};
+}
+
 export function mountHome(root: HTMLElement): () => void {
   const day = today();
   const daily = save.daily.results[day];

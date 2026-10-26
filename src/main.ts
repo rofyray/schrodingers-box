@@ -5,7 +5,7 @@ import { parseChallenge } from "./game";
 import { applyMotion, applyTheme, initSound } from "./prefs";
 import { nav, newRun, type RunState } from "./run";
 import { mountCatdex } from "./screens/catdex";
-import { mountHome } from "./screens/home";
+import { mountHome, mountIntro } from "./screens/home";
 import { mountRound } from "./screens/round";
 import { mountSummary } from "./screens/summary";
 import { save } from "./state";
@@ -22,7 +22,8 @@ function swap(screen: Parameters<typeof nav.go>[0], run?: RunState): void {
   app.replaceChildren(host);
   window.scrollTo(0, 0);
   document.body.dataset.screen = screen;
-  if (screen === "home") cleanup = mountHome(host);
+  if (screen === "intro") cleanup = mountIntro(host);
+  else if (screen === "home") cleanup = mountHome(host);
   else if (screen === "round" && run) cleanup = mountRound(host, run);
   else if (screen === "summary" && run) cleanup = mountSummary(host, run);
   else if (screen === "catdex") cleanup = mountCatdex(host);
@@ -48,13 +49,13 @@ initAnalytics();
 bindButtonSounds();
 onAchievement((a) => toast(`<b>Badge earned</b><span>${a.name}</span>`, "achv", 3200));
 
-// Boot: a challenge link opens its box; a first visit drops straight into round 1.
+// Boot: a challenge link opens its box; a first visit gets the intro, everyone else the home screen.
 const challenge = parseChallenge(location.hash);
 if (challenge) {
   history.replaceState(null, "", location.pathname);
   nav.go("round", newRun("challenge", { seed: challenge.seed, challenge: { w: challenge.w, o: challenge.o } }));
 } else if (save.runs === 0) {
-  nav.go("round", newRun("run", { firstEver: true }));
+  nav.go("intro");
 } else {
   nav.go("home");
 }

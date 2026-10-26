@@ -1780,6 +1780,30 @@ body.glitching b {
   gap: 14px;
   padding-top: max(20px, env(safe-area-inset-top));
 }
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  gap: 18px;
+  min-height: 100dvh;
+  padding-top: max(24px, env(safe-area-inset-top));
+}
+.intro .crate-wrap {
+  width: min(70vw, 320px, 36dvh);
+}
+.intro-pitch {
+  max-width: 32ch;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.intro-play {
+  width: min(100%, 420px);
+  justify-self: center;
+  min-height: 84px;
+  font-size: 44px;
+}
 .home-head {
   text-align: center;
 }

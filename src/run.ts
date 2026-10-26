@@ -37,7 +37,7 @@ export function newRun(mode: Mode, extra: Partial<RunState> = {}): RunState {
   };
 }
 
-type Screen = "home" | "round" | "summary" | "catdex";
+type Screen = "intro" | "home" | "round" | "summary" | "catdex";
 
 /** Navigation registry: screens call nav.go without importing each other. */
 export const nav: { go: (screen: Screen, run?: RunState) => void } = {
