@@ -42,7 +42,6 @@ nav.go = (screen, run) => {
 
 applyTheme();
 applyMotion();
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
 matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", applyMotion);
 initSound();
 initAnalytics();

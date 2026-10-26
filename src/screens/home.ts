@@ -25,8 +25,14 @@ export function mountIntro(root: HTMLElement): () => void {
   </section>`;
   const play = $(".intro-play", root) as HTMLButtonElement;
   play.addEventListener("click", () => nav.go("round", newRun("run", { firstEver: true })));
-  play.focus({ preventScroll: true });
-  return () => {};
+  // Enter or Space starts without auto-focusing Play, so no focus ring shows on load.
+  const onKey = (e: KeyboardEvent) => {
+    if ((e.key !== "Enter" && e.key !== " ") || (e.target as HTMLElement).closest("button, input, select, textarea")) return;
+    e.preventDefault();
+    play.click();
+  };
+  document.addEventListener("keydown", onKey);
+  return () => document.removeEventListener("keydown", onKey);
 }
 
 export function mountHome(root: HTMLElement): () => void {

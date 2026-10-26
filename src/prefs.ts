@@ -7,10 +7,8 @@ export function applyMotion(): void {
 }
 
 export function applyTheme(): void {
-  const t = save.settings.theme;
-  if (t === "auto") document.documentElement.removeAttribute("data-theme");
-  else document.documentElement.dataset.theme = t;
-  const dark = t === "dark" || (t === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
+  const dark = save.settings.theme === "dark";
+  document.documentElement.dataset.theme = dark ? "dark" : "light";
   document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#1D2823" : "#F2EAD6");
 }
 

@@ -71,7 +71,7 @@ export function openSettings(): void {
     `<div class="settings">
       <label class="row"><span>Sound</span><input type="checkbox" class="sw" data-k="sound" ${s.sound !== false ? "checked" : ""}></label>
       <label class="row"><span>Reduce motion</span><select data-k="motion"><option value="auto" ${s.reducedMotion === null ? "selected" : ""}>Follow system</option><option value="on" ${s.reducedMotion === true ? "selected" : ""}>On</option><option value="off" ${s.reducedMotion === false ? "selected" : ""}>Off</option></select></label>
-      <label class="row"><span>Theme</span><select data-k="theme"><option value="auto" ${s.theme === "auto" ? "selected" : ""}>Follow system</option><option value="light" ${s.theme === "light" ? "selected" : ""}>Notebook</option><option value="dark" ${s.theme === "dark" ? "selected" : ""}>Chalkboard</option></select></label>
+      <label class="row"><span>Theme</span><select data-k="theme"><option value="light" ${s.theme === "light" ? "selected" : ""}>Notebook</option><option value="dark" ${s.theme === "dark" ? "selected" : ""}>Chalkboard</option></select></label>
       <h3>Save code</h3>
       <p class="fine">Progress lives in this browser. Copy the code to move it, or paste one to restore.</p>
       <div class="save-io"><button class="btn btn-ghost do-export">Copy save code</button></div>

@@ -37,7 +37,7 @@ export interface Save {
   multiverse: { branches: number; log: Branch[] };
   daily: { lastDay: string | null; streak: number; results: Record<string, DailyResult> };
   box1935: { sealedAt: number; seed: string } | null;
-  settings: { sound: boolean | null; reducedMotion: boolean | null; theme: "auto" | "light" | "dark" };
+  settings: { sound: boolean | null; reducedMotion: boolean | null; theme: "light" | "dark" };
 }
 
 const KEY = "sbox.v1";
@@ -57,7 +57,7 @@ export function freshSave(): Save {
     multiverse: { branches: 0, log: [] },
     daily: { lastDay: null, streak: 0, results: {} },
     box1935: null,
-    settings: { sound: null, reducedMotion: null, theme: "auto" },
+    settings: { sound: null, reducedMotion: null, theme: "light" },
   };
 }
 
@@ -68,7 +68,8 @@ function merge(raw: Partial<Save>): Save {
     ...raw,
     multiverse: { ...base.multiverse, ...(raw.multiverse ?? {}) },
     daily: { ...base.daily, ...(raw.daily ?? {}) },
-    settings: { ...base.settings, ...(raw.settings ?? {}) },
+    // Notebook is the default; saves from before that ("auto") read as Notebook.
+    settings: { ...base.settings, ...(raw.settings ?? {}), theme: raw.settings?.theme === "dark" ? "dark" : "light" },
     version: 1,
   };
 }

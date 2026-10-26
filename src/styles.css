@@ -49,31 +49,6 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #1d2823;
-    --card-fill: #25322b;
-    --ink: #e9e7da;
-    --ink-soft: rgba(233, 231, 218, 0.62);
-    --ink-faint: rgba(233, 231, 218, 0.14);
-    --ink-blue: #a9cdf0;
-    --grid: rgba(233, 231, 218, 0.045);
-    --grid-major: rgba(233, 231, 218, 0.09);
-    --margin: #e8785c;
-    --kraft: #2f3d35;
-    --kraft-light: #36463d;
-    --kraft-dark: #27332c;
-    --ghost: #2f4541;
-    --leak: #fff3c8;
-    --scrim: rgba(8, 12, 10, 0.6);
-    --t-uncommon: #3dff8b;
-    --t-rare: #3db8ff;
-    --t-epic: #c08bff;
-    --t-legendary: #ffc83d;
-    --t-weird: #ff6fc6;
-    color-scheme: dark;
-  }
-}
 :root[data-theme="dark"] {
   --paper: #1d2823;
   --card-fill: #25322b;
@@ -190,13 +165,6 @@ svg {
   mix-blend-mode: screen;
   opacity: 0.25;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .paper::after {
-    mix-blend-mode: screen;
-    opacity: 0.25;
-  }
-}
-
 /* The desk lamp: the room darkens as the odds climb. */
 .lamp {
   position: absolute;
@@ -2300,12 +2268,6 @@ button.stat {
 :root[data-theme="dark"] .dex-tile.missing .dex-art svg,
 :root[data-theme="dark"] .card-silhouette svg {
   filter: brightness(0) invert(1);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .dex-tile.missing .dex-art svg,
-  :root:not([data-theme="light"]) .card-silhouette svg {
-    filter: brightness(0) invert(1);
-  }
 }
 .dex-tile.missing .dex-name {
   color: var(--ink-soft);
