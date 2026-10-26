@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Schrödinger's Box</title>
+    <meta name="description" content="A push-your-luck thought experiment. Wait while the decay odds climb, open the box, and collapse the cat into one of 40 collectible outcomes." />
+    <meta name="theme-color" content="#F2EAD6" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Schrödinger's Box" />
+    <meta property="og:description" content="Wait longer for bigger rewards. Every second, the atom is more likely to have decayed." />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Schrödinger's Box" />
+    <meta name="twitter:description" content="Wait longer for bigger rewards. Every second, the atom is more likely to have decayed." />
+    <meta name="twitter:image" content="/og.png" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Big+Shoulders+Stencil+Display:wght@900&family=Nanum+Pen+Script&family=Special+Elite&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <filter id="inkwob" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" />
+        <feDisplacementMap in="SourceGraphic" scale="2.4" />
+      </filter>
+    </svg>
+    <div class="paper" aria-hidden="true"><div class="lamp"></div></div>
+    <button id="mute" class="icon-btn mute" type="button" aria-label="Mute sound"></button>
+    <main id="app"></main>
+    <div id="overlay"></div>
+    <div id="sheet-root"></div>
+    <div id="toasts" aria-live="polite"></div>
+    <div id="sr" class="sr-only" aria-live="assertive"></div>
+    <noscript><p style="padding: 24px; font-family: monospace">Schrödinger's Box needs JavaScript to open the box.</p></noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
